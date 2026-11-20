@@ -140,17 +140,45 @@ document.querySelectorAll(".filter").forEach(btn => {
   });
 });
 
-/* ---------- Contact form: opens the visitor's email app ---------- */
-document.getElementById("contactForm").addEventListener("submit", (e) => {
+/* ---------- Contact form: sends through FormSubmit to my inbox ---------- */
+const contactForm = document.getElementById("contactForm");
+contactForm.addEventListener("submit", async (e) => {
   e.preventDefault();
+  const note = document.getElementById("formNote");
+  const button = contactForm.querySelector("button[type=submit]");
   const name = document.getElementById("name").value.trim();
   const email = document.getElementById("email").value.trim();
   const message = document.getElementById("message").value.trim();
-  const subject = `Message from ${name}`;
-  const body = `${message}\n\n— ${name} (${email})`;
-  window.location.href = `mailto:amirsamehow1@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  document.getElementById("formNote").textContent = "Opening your email app to send the message…";
-  e.target.reset();
+
+  // bots fill in the hidden field; people never see it
+  if (contactForm.elements._honey.value) return;
+
+  button.disabled = true;
+  note.className = "form-note";
+  note.textContent = "Sending…";
+
+  try {
+    const res = await fetch("https://formsubmit.co/ajax/amirsamehow1@gmail.com", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        name, email, message,
+        _subject: `New message from ${name} (personal website)`,
+        _template: "table",
+      }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || String(data.success) !== "true") throw new Error(data.message || res.statusText);
+
+    note.classList.add("form-note--ok");
+    note.textContent = "Thanks! Your message has been sent. I'll get back to you soon.";
+    contactForm.reset();
+  } catch (err) {
+    note.classList.add("form-note--error");
+    note.textContent = "Sorry, your message couldn't be sent. Please email me directly at amirsamehow1@gmail.com.";
+  } finally {
+    button.disabled = false;
+  }
 });
 
 /* ---------- Desktop-only effects ---------- */
