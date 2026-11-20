@@ -385,6 +385,9 @@ main, .footer, .nav { position: relative; z-index: 2; }
 }
 .contact__form .btn { align-self: flex-start; }
 .form-note { color: var(--gold); font-size: 14px; min-height: 1.4em; }
+.form-note--error { color: #e07a5f; }
+.form-honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.contact__form .btn:disabled { opacity: .6; cursor: wait; }
 
 /* ---------- Footer ---------- */
 .footer {
