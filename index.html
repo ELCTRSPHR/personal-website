@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amir Soltan — Personal Website</title>
+  <meta name="description" content="Personal website of Amir Soltan." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== Loading screen ===== -->
+  <div class="preloader" id="preloader">
+    <div class="preloader__mark">AS</div>
+    <div class="preloader__bar"><span></span></div>
+  </div>
+
+  <!-- ===== Extras: cursor, scroll progress, background ===== -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ===== Navigation ===== -->
+  <header class="nav" id="nav">
+    <a href="#home" class="nav__logo">
+      <span class="gold-text">AS</span><span class="nav__logo-dot">.</span>
+    </a>
+    <nav>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#home" class="nav__link active">Home</a></li>
+        <li><a href="#about" class="nav__link">About</a></li>
+        <li><a href="#hobbies" class="nav__link">Hobbies</a></li>
+        <li><a href="#skills" class="nav__link">Skills</a></li>
+        <li><a href="#projects" class="nav__link">Projects</a></li>
+        <li><a href="#journey" class="nav__link">Journey</a></li>
+        <li><a href="#contact" class="nav__link nav__link--cta">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="nav__toggle" id="navToggle" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+      <div class="hero__glow"></div>
+      <div class="hero__content">
+        <p class="eyebrow reveal">WELCOME TO MY W3BSYTE</p>
+        <h1 class="hero__title reveal">
+          <span class="hero__hi">Hi, I'm</span>
+          <span class="gold-text shimmer">Amir Soltan</span>
+        </h1>
+        <p class="hero__role reveal">
+          <span class="typed" id="typed"></span><span class="caret">|</span>
+        </p>
+        <p class="hero__intro reveal">
+          Future software engineer / game developer, always striving to reach beyond the stars.
+        </p>
+        <div class="hero__actions reveal">
+          <a href="#about" class="btn btn--gold magnetic">Get to know me</a>
+          <a href="#contact" class="btn btn--ghost magnetic">Say hello</a>
+        </div>
+      </div>
+      <a href="#about" class="scroll-hint" aria-label="Scroll down">
+        <span class="scroll-hint__line"></span>
+        <span>Scroll</span>
+      </a>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="section" id="about">
+      <div class="section__head reveal">
+        <span class="section__num">01</span>
+        <h2 class="section__title">About <em class="gold-text">Me</em></h2>
+        <span class="section__line"></span>
+      </div>
+
+      <div class="about">
+        <div class="about__side">
+        <div class="about__photo reveal">
+          <div class="about__frame tilt">
+            <img src="images/me.jpg" alt="Amir Soltan" />
+          </div>
+        </div>
+
+          <ul class="about__facts reveal">
+            <li><span>Location</span>Bonifacio Global City, Philippines</li>
+            <li><span>Focus</span>Game Development &amp; Software Engineering</li>
+            <li><span>Languages</span>English</li>
+            <li><span>Status</span>Open to opportunities</li>
+          </ul>
+        </div>
+
+        <div class="about__text">
+          <p class="lead reveal">
+            From the Overwatch arena to the night sky, I aim beyond the stars.
+          </p>
+          <p class="reveal">
+            Competing in an Overwatch esports league taught me what it takes to perform when it counts:
+            split-second decisions, trust in your team, and the discipline to review every loss until it
+            becomes a lesson. That mindset carried my team to first place in 9 separate tournaments, and
+            every one of those wins was earned the same way: together, one round at a time.
+          </p>
+          <p class="reveal">
+            Away from the screen, I’m drawn to the night sky. Astronomy keeps me curious and humble, a
+            reminder that there is always more to explore than what we can see. Together, the arena and the
+            cosmos shape how I live: compete with heart, stay curious, and never treat the stars as the limit.
+          </p>
+          <p class="reveal">
+            Games are where all of it meets. I love playing them, and I love understanding how they work,
+            which is why I’m into game development: turning ideas into worlds, mechanics, and moments that
+            make other players feel what I feel when a match comes together.
+          </p>
+
+          <div class="stats reveal">
+            <div class="stat"><span class="stat__num" data-count="6">0</span><span class="stat__plus">+</span><p>Years of competitive Overwatch</p></div>
+            <div class="stat"><span class="stat__num" data-count="9">0</span><p>Consecutive tournaments won</p></div>
+            <div class="stat"><span class="stat__num" data-count="3000">0</span><span class="stat__plus">+</span><p>Hours of coding experience</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HOBBIES ===== -->
+    <section class="section" id="hobbies">
+      <div class="section__head reveal">
+        <span class="section__num">02</span>
+        <h2 class="section__title">Hobbies &amp; <em class="gold-text">Interests</em></h2>
+        <span class="section__line"></span>
+      </div>
+
+      <div class="cards">
+        <article class="card tilt reveal">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          </div>
+          <h3>Listening to Music</h3>
+          <p>Music keeps me focused and locked in. I work and function better while listening to music I love — it keeps my mind in sync.</p>
+        </article>
+        <article class="card tilt reveal">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="3"/><path d="M6 12h4M8 10v4"/><circle cx="16" cy="11" r=".5"/><circle cx="18" cy="13" r=".5"/></svg>
+          </div>
+          <h3>Games</h3>
+          <p>When I'm not doing anything, I like to keep myself distracted and away from stress by playing games like Overwatch, Cyberpunk 2077 and Forza Horizon 6.</p>
+        </article>
+        <article class="card tilt reveal">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2.5"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5"/></svg>
+          </div>
+          <h3>Movies</h3>
+          <p>The same way I love playing games, I also love watching movies. Some of my favourites are Interstellar, Pacific Rim and Blade Runner 2049.</p>
+        </article>
+        <article class="card tilt reveal">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><path d="M16 8 2 22M17.5 15H9"/></svg>
+          </div>
+          <h3>Writing</h3>
+          <p>I love expressing how I feel towards the person I truly love. I often write poetry and letters as a way of telling her how I truly feel.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section class="section" id="skills">
+      <div class="section__head reveal">
+        <span class="section__num">03</span>
+        <h2 class="section__title">Skills &amp; <em class="gold-text">Strengths</em></h2>
+        <span class="section__line"></span>
+      </div>
+
+      <ol class="strengths">
+        <li class="strength reveal">
+          <h3>Systems-Level Problem Solving</h3>
+          <p>The same way I'd break down a match round by round, I break large, complex challenges into logical, manageable pieces, whether I'm debugging structured C++ programs or troubleshooting intricate technical workflows.</p>
+        </li>
+        <li class="strength reveal">
+          <h3>Technical &amp; Creative Execution</h3>
+          <p>Games are where logic and imagination meet for me. I bridge analytical precision with creative design through 3D modeling, procedural geometry generation, and building physics-grounded simulation assets from scratch, like my Tachyon 714 Light Sail.</p>
+        </li>
+        <li class="strength reveal">
+          <h3>Iterative Persistence &amp; Attention to Detail</h3>
+          <p>Esports taught me to review every loss until it becomes a lesson. I bring that same habit to my work, testing and revising until every technical specification and visual detail meets a high standard.</p>
+        </li>
+        <li class="strength reveal">
+          <h3>Big-Picture Vision &amp; Curiosity</h3>
+          <p>The night sky keeps me curious. A deep interest in astronomy, aerospace engineering and emerging technologies drives me to connect big, forward-looking ideas with practical execution, and to never treat the stars as the limit.</p>
+        </li>
+        <li class="strength reveal">
+          <h3>Composure &amp; Self-Management</h3>
+          <p>Competing at a professional level taught me to stay calm under pressure and trust the people around me. I balance intense focus on passion projects with steady efficiency on routine tasks, making step-by-step progress toward long-term goals without burning out.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section class="section" id="projects">
+      <div class="section__head reveal">
+        <span class="section__num">04</span>
+        <h2 class="section__title">Featured <em class="gold-text">Projects</em></h2>
+        <span class="section__line"></span>
+      </div>
+
+      <div class="filters reveal" id="filters">
+        <button class="filter active" data-filter="all">All</button>
+        <button class="filter" data-filter="mods">Game Mods</button>
+        <button class="filter" data-filter="software">Software</button>
+      </div>
+
+      <div class="projects" id="projectGrid">
+        <article class="project reveal" data-cat="mods">
+          <div class="project__img">
+            <svg class="project__art" viewBox="0 0 320 200" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Line drawing of a starship towed by a laser light sail">
+              <!-- laser beam coming from behind the ship -->
+              <path d="M312 58H44M312 142H44" stroke-dasharray="2 7" opacity=".5"/>
+              <!-- mirrored sail dish -->
+              <path d="M46 26Q10 100 46 174"/>
+              <path d="M46 26Q30 100 46 174"/>
+              <path d="M33 62l-6 1M30 100h-9M33 138l-6-1" opacity=".6"/>
+              <!-- tethers -->
+              <path d="M46 26L128 92M46 174L128 108M40 64L128 96M40 136L128 104" stroke-width="1" opacity=".55"/>
+              <!-- ship: shield, cargo, radiators, engine -->
+              <ellipse cx="132" cy="100" rx="4" ry="20"/>
+              <path d="M136 100H262"/>
+              <rect x="141" y="93" width="26" height="14" rx="2"/>
+              <rect x="171" y="95" width="18" height="10" rx="2"/>
+              <path d="M196 97L208 74H238L246 97M196 103L208 126H238L246 103"/>
+              <path d="M214 74L210 97M226 74L226 97M214 126L210 103M226 126L226 103" stroke-width="1" opacity=".55"/>
+              <path d="M250 95v10M256 95v10"/>
+              <rect x="262" y="92" width="10" height="16" rx="1.5"/>
+              <path d="M272 95L288 87V113L272 105"/>
+            </svg>
+          </div>
+          <div class="project__body">
+            <span class="project__cat">Kerbal Space Program Mod</span>
+            <h3>Tachyon 714 Light Sail</h3>
+            <p>A laser-pushed interstellar light sail I designed and built for KSP, made for recreating the ISV Venture Star or towing any ship you like. A 2.8&nbsp;m canister launches a seed pod 1.5&nbsp;km ahead on carbon-nanotube tethers, which unfolds into a 2&nbsp;km mirrored dish. Released open source on SpaceDock for KSP 1.12.5.</p>
+            <a href="https://spacedock.info/mod/4729/Tachyon%20714%20Light%20Sail" class="project__link" target="_blank" rel="noopener">View on SpaceDock <span>→</span></a>
+          </div>
+        </article>
+        <article class="project reveal" data-cat="software">
+          <div class="project__img">
+            <svg class="project__art" viewBox="0 0 320 200" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Pulse Visualizer app icon">
+              <!-- app tile -->
+              <rect x="94" y="34" width="132" height="132" rx="30"/>
+              <!-- spectrum bars -->
+              <path stroke-width="3.2" d="M160 73L160 57.3M165.6 73.6L169.9 53.6M171 75.3L181.8 50.9M175.9 78.2L189.1 59.9M180.1 81.9L195.2 68.3M183.4 86.5L202.6 75.4M185.7 91.7L209.8 83.8M186.9 97.2L203.8 95.4M186.9 102.8L210.2 105.3M185.7 108.3L208.4 115.7M183.4 113.5L202.1 124.3M180.1 118.1L196.6 133M175.9 121.8L190.2 141.5M171 124.7L180.3 145.5M165.6 126.4L169.2 143.3M160 127L160 152.9M154.4 126.4L149.7 148.3M149 124.7L141.1 142.5M144.1 121.8L130.5 140.6M139.9 118.1L119.8 136.2M136.6 113.5L119.5 123.4M134.3 108.3L118.9 113.4M133.1 102.8L105.9 105.7M133.1 97.2L108 94.5M134.3 91.7L118.4 86.5M136.6 86.5L116.9 75.1M139.9 81.9L118.4 62.5M144.1 78.2L131.9 61.4M149 75.3L143.2 62.3M154.4 73.6L148.6 46.6"/>
+              <!-- centre ring -->
+              <circle cx="160" cy="100" r="17"/>
+              <circle cx="160" cy="100" r="6" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="project__body">
+            <span class="project__cat">C++ Application · Deprecated</span>
+            <h3>Pulse Visualizer</h3>
+            <p>A real-time audio visualizer I built purely in C++. Link it to Spotify and it syncs with what you're listening to, displaying the song's lyrics live. Choose between three visualizer modes (classic bars, my signature circle visualizer, and a pulsing ring) and customise nearly every part of the look.</p>
+            <p class="project__note">Version 1 has been retired and is no longer available to download. All development has moved to Pulse Visualizer 2.0, a full overhaul that builds on everything here.</p>
+            <span class="project__link project__link--soon">GitHub discontinued</span>
+          </div>
+        </article>
+        <article class="project reveal" data-cat="software">
+          <div class="project__img">
+            <svg class="project__art" viewBox="0 0 320 200" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Pulse Visualizer 2.0 app icon">
+              <!-- app tile -->
+              <rect x="94" y="34" width="132" height="132" rx="30"/>
+              <!-- spectrum bars -->
+              <path stroke-width="3.2" d="M160 73L160 57.3M165.6 73.6L169.9 53.6M171 75.3L181.8 50.9M175.9 78.2L189.1 59.9M180.1 81.9L195.2 68.3M183.4 86.5L202.6 75.4M185.7 91.7L209.8 83.8M186.9 97.2L203.8 95.4M186.9 102.8L210.2 105.3M185.7 108.3L208.4 115.7M183.4 113.5L202.1 124.3M180.1 118.1L196.6 133M175.9 121.8L190.2 141.5M171 124.7L180.3 145.5M165.6 126.4L169.2 143.3M160 127L160 152.9M154.4 126.4L149.7 148.3M149 124.7L141.1 142.5M144.1 121.8L130.5 140.6M139.9 118.1L119.8 136.2M136.6 113.5L119.5 123.4M134.3 108.3L118.9 113.4M133.1 102.8L105.9 105.7M133.1 97.2L108 94.5M134.3 91.7L118.4 86.5M136.6 86.5L116.9 75.1M139.9 81.9L118.4 62.5M144.1 78.2L131.9 61.4M149 75.3L143.2 62.3M154.4 73.6L148.6 46.6"/>
+              <!-- centre ring -->
+              <circle cx="160" cy="100" r="17"/>
+              <circle cx="160" cy="100" r="6" fill="currentColor"/>
+              <!-- V2 badge -->
+              <rect x="203" y="21" width="46" height="26" rx="13" fill="#1a160b"/>
+              <text class="project__badge" x="226" y="34.5" text-anchor="middle" dominant-baseline="middle" fill="currentColor" stroke="none">V2</text>
+            </svg>
+          </div>
+          <div class="project__body">
+            <span class="project__cat">C++ Application · Out Now</span>
+            <h3>Pulse Visualizer 2.0</h3>
+            <p>The full release of my massive overhaul for Pulse Visualizer. It keeps everything the original does (the three visualizer modes, Spotify lyric sync and deep customisation) and pushes it all much further, with more polish, better performance and even more control over every part of the visuals.</p>
+            <a href="https://github.com/ELCTRSPHR/PulseVisualizer" class="project__link" target="_blank" rel="noopener">View on GitHub <span>→</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== JOURNEY / TIMELINE ===== -->
+    <section class="section" id="journey">
+      <div class="section__head reveal">
+        <span class="section__num">05</span>
+        <h2 class="section__title">My <em class="gold-text">Journey</em></h2>
+        <span class="section__line"></span>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline__item reveal">
+          <span class="timeline__date">2026 — Present</span>
+          <h3>BSEMC College Student</h3>
+          <p class="timeline__place">College of Innovation and Integrated Technology</p>
+          <p>Studying Entertainment and Multimedia Computing, the field I've wanted to be in all along. I'm building the skills for my future career here, going deep into programming and 3D modeling, and finally learning the craft behind the games and software I've always been drawn to.</p>
+        </div>
+        <div class="timeline__item reveal">
+          <span class="timeline__date">2024 — 2026</span>
+          <h3>Senior High School, STEM</h3>
+          <p class="timeline__place">CEU Malolos</p>
+          <p>I studied under the Caregiving track of the STEM strand, a path with little connection to the career I wanted. It wasn't the right fit, but it made me certain of where I actually belonged, and pushed me to pursue it with full commitment the moment I had the chance.</p>
+        </div>
+        <div class="timeline__item reveal">
+          <span class="timeline__date">2019</span>
+          <h3>Joined a Professional Overwatch Team</h3>
+          <p class="timeline__place">Competitive Esports</p>
+          <p>Being accepted onto a professional team was where it all started. Competing at that level taught me discipline, teamwork and how to perform under pressure, along with the habit of constantly analysing and improving. It's where I learned what makes me great today.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== QUOTE ===== -->
+    <section class="quote reveal">
+      <blockquote>
+        <span class="quote__mark gold-text">“</span>
+        No matter how high you dream, Reach for the Stars, Always.
+        <cite>— Amir Soltan</cite>
+      </blockquote>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section" id="contact">
+      <div class="section__head reveal">
+        <span class="section__num">06</span>
+        <h2 class="section__title">Get In <em class="gold-text">Touch</em></h2>
+        <span class="section__line"></span>
+      </div>
+
+      <div class="contact">
+        <div class="contact__info reveal">
+          <p class="lead">Have a question, an idea, or just want to say hi? My inbox is always open.</p>
+          <a href="mailto:amirsamehow1@gmail.com" class="contact__line">
+            <span>Email</span> amirsamehow1@gmail.com
+          </a>
+          <a href="tel:+639662349787" class="contact__line">
+            <span>Phone</span> +63 966 234 9787
+          </a>
+          <div class="socials">
+            <a href="https://www.instagram.com/x33am_r/" target="_blank" rel="noopener" aria-label="Instagram" class="magnetic"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/></svg></a>
+            <a href="https://github.com/ELCTRSPHR" target="_blank" rel="noopener" aria-label="GitHub" class="magnetic"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
+          </div>
+        </div>
+
+        <form class="contact__form reveal" id="contactForm">
+          <div class="field">
+            <input type="text" id="name" required placeholder=" " />
+            <label for="name">Your name</label>
+          </div>
+          <div class="field">
+            <input type="email" id="email" required placeholder=" " />
+            <label for="email">Your email</label>
+          </div>
+          <div class="field">
+            <textarea id="message" rows="5" required placeholder=" "></textarea>
+            <label for="message">Your message</label>
+          </div>
+          <button type="submit" class="btn btn--gold magnetic">Send message</button>
+          <p class="form-note" id="formNote"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <a href="#home" class="nav__logo"><span class="gold-text">AS</span><span class="nav__logo-dot">.</span></a>
+    <p>© <span id="year"></span> Amir Soltan. Crafted with care.</p>
+    <a href="#home" class="to-top magnetic" id="toTop" aria-label="Back to top">↑</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
