@@ -24,6 +24,38 @@
   <div class="cursor-ring" id="cursorRing"></div>
   <div class="scroll-progress" id="scrollProgress"></div>
   <canvas id="particles" aria-hidden="true"></canvas>
+  <div class="planet" id="planet" aria-hidden="true">
+    <svg class="planet__svg" viewBox="-300 -300 600 600" fill="none" stroke="currentColor" stroke-linecap="round">
+      <defs>
+        <clipPath id="planetClip"><circle r="118"/></clipPath>
+      </defs>
+      <g transform="rotate(-18)">
+        <!-- rings, back half (hidden behind the planet) -->
+        <g stroke-width="1.2" opacity=".55">
+          <path d="M-262 0A262 64 0 0 1 262 0"/>
+          <path d="M-236 0A236 57 0 0 1 236 0" opacity=".6"/>
+          <path d="M-212 0A212 51 0 0 1 212 0"/>
+          <path d="M-168 0A168 40 0 0 1 168 0" opacity=".5"/>
+        </g>
+        <!-- planet body -->
+        <circle r="118" fill="var(--black)" stroke-width="1.6"/>
+        <g clip-path="url(#planetClip)" stroke-width="1" opacity=".45">
+          <path d="M-130 -62Q0 -48 130 -62"/>
+          <path d="M-130 -26Q0 -10 130 -26"/>
+          <path d="M-130 14Q0 32 130 14" opacity=".7"/>
+          <path d="M-130 52Q0 72 130 52"/>
+          <path d="M-130 84Q0 102 130 84" opacity=".7"/>
+        </g>
+        <!-- rings, front half (passes over the planet) -->
+        <g stroke-width="1.4">
+          <path d="M-262 0A262 64 0 0 0 262 0"/>
+          <path d="M-236 0A236 57 0 0 0 236 0" opacity=".6"/>
+          <path d="M-212 0A212 51 0 0 0 212 0"/>
+          <path d="M-168 0A168 40 0 0 0 168 0" opacity=".5"/>
+        </g>
+      </g>
+    </svg>
+  </div>
   <div class="grain" aria-hidden="true"></div>
 
   <!-- ===== Navigation ===== -->
