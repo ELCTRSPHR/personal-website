@@ -39,6 +39,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
 /* ---------- Nav: shrink on scroll, progress bar, active link ---------- */
 const nav = document.getElementById("nav");
 const progress = document.getElementById("scrollProgress");
+const planet = document.getElementById("planet");
 const links = document.querySelectorAll(".nav__link");
 const sections = [...document.querySelectorAll("main section[id]")];
 
@@ -47,6 +48,7 @@ function onScroll() {
   nav.classList.toggle("scrolled", y > 40);
   const max = document.documentElement.scrollHeight - innerHeight;
   progress.style.width = (max > 0 ? (y / max) * 100 : 0) + "%";
+  if (!reduceMotion) planet.style.setProperty("--planet-shift", (y * -0.06).toFixed(1) + "px");
 
   let current = sections[0].id;
   for (const s of sections) if (s.offsetTop - innerHeight * 0.4 <= y) current = s.id;
