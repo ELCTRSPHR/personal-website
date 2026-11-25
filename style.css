@@ -104,10 +104,11 @@ body.has-cursor .cursor-dot, body.has-cursor .cursor-ring { display: block; }
 #particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 .planet {
   position: fixed; z-index: 0; pointer-events: none;
-  top: 50%; right: clamp(-220px, -11vw, -70px); width: clamp(360px, 54vw, 840px);
+  top: 50%; right: -38vw; width: 112vw;
   transform: translate3d(0, calc(-50% + var(--planet-shift, 0px)), 0);
-  color: rgba(212,175,55,.32);
+  color: rgba(212,175,55,.28);
 }
+.planet__svg * { vector-effect: non-scaling-stroke; }
 .planet__svg { display: block; width: 100%; height: auto; overflow: visible; animation: planet-float 14s ease-in-out infinite; }
 @keyframes planet-float {
   0%, 100% { transform: translateY(0) rotate(0deg); }
@@ -431,7 +432,7 @@ main, .footer, .nav { position: relative; z-index: 2; }
   .hero__intro { margin-bottom: 30px; }
 }
 @media (max-width: 600px) {
-  .planet { right: -130px; width: 400px; color: rgba(212,175,55,.2); }
+  .planet { right: -95vw; width: 170vw; color: rgba(212,175,55,.18); }
   .section__title { white-space: normal; }
   .hero__title .gold-text { letter-spacing: 1px; }
   .section__line, .section__head::before { display: none; }
