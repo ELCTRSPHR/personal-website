@@ -102,6 +102,17 @@ body.has-cursor .cursor-dot, body.has-cursor .cursor-ring { display: block; }
 
 /* ---------- Background layers ---------- */
 #particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+.planet {
+  position: fixed; z-index: 0; pointer-events: none;
+  top: 50%; right: clamp(-180px, -9vw, -60px); width: clamp(300px, 44vw, 680px);
+  transform: translate3d(0, calc(-50% + var(--planet-shift, 0px)), 0);
+  color: rgba(212,175,55,.32);
+}
+.planet__svg { display: block; width: 100%; height: auto; overflow: visible; animation: planet-float 14s ease-in-out infinite; }
+@keyframes planet-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(1.5deg); }
+}
 .grain {
   position: fixed; inset: -50%; z-index: 1; pointer-events: none; opacity: .045;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -420,6 +431,7 @@ main, .footer, .nav { position: relative; z-index: 2; }
   .hero__intro { margin-bottom: 30px; }
 }
 @media (max-width: 600px) {
+  .planet { right: -110px; width: 340px; color: rgba(212,175,55,.2); }
   .section__title { white-space: normal; }
   .hero__title .gold-text { letter-spacing: 1px; }
   .section__line, .section__head::before { display: none; }
