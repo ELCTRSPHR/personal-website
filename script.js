@@ -1,4 +1,4 @@
-const defaultRoles = ["Dreamer", "Creator", "Professional Esports Player", "Pushing Beyond Functional Limits"];
+const defaultRoles = ["Dreamer", "Creator", "Esports Champion", "Pushing Beyond Functional Limits"];
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -23,7 +23,6 @@ document.getElementById("year").textContent = new Date().getFullYear();
 (function typer() {
   const el = document.getElementById("typed");
   if (!el) return;
-  // a page can supply its own phrases with data-roles="One|Two|Three"
   const roles = el.dataset.roles ? el.dataset.roles.split("|") : defaultRoles;
   if (reduceMotion) { el.textContent = roles[0]; return; }
   let r = 0, c = 0, deleting = false;
@@ -53,7 +52,6 @@ function onScroll() {
   progress.style.width = (max > 0 ? (y / max) * 100 : 0) + "%";
   if (planet && !reduceMotion) planet.style.setProperty("--planet-shift", (y * -0.06).toFixed(1) + "px");
 
-  // sections can share one nav link through data-nav (e.g. every Part A section lights up "Part A")
   let current = sections[0].dataset.nav || sections[0].id;
   for (const s of sections) if (s.offsetTop - innerHeight * 0.4 <= y) current = s.dataset.nav || s.id;
   links.forEach(l => l.classList.toggle("active", l.getAttribute("href") === "#" + current));
