@@ -1,12 +1,9 @@
-/* ---------- Flowing gas-giant background (portfolio page) ----------
-   A WebGL shader that warps layered noise into slowly moving,
-   Jupiter-like bands and swirls. Rendered at reduced resolution
-   for speed; the canvas is stretched to fill the screen. */
+/* ---------- Gas giant background (portfolio) ---------- */
 (function liquid() {
   const canvas = document.getElementById("liquid");
   if (!canvas) return;
   const gl = canvas.getContext("webgl", { antialias: false, premultipliedAlpha: false });
-  if (!gl) return; // CSS gradient on the canvas stays as the fallback
+  if (!gl) return; // falls back to the css gradient
 
   const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -38,18 +35,18 @@
       vec2 uv = gl_FragCoord.xy / uRes.y;
       float t = uTime * 0.035;
 
-      // diagonal bands, like the planet seen at an angle
+      // tilted, stretched bands
       vec2 p = mat2(0.94, -0.34, 0.34, 0.94) * (uv * 2.1);
       p.y += uScroll;
-      p *= vec2(0.6, 1.35); // stretch swirls along the belts, like Jupiter's jet streams
+      p *= vec2(0.6, 1.35);
 
-      // domain warping: noise feeding noise gives the fluid, swirling look
+      // domain warp
       vec2 q = vec2(fbm(p + vec2(0.0, t)), fbm(p + vec2(5.2, 1.3) - t));
       vec2 r = vec2(fbm(p + 4.0 * q + vec2(1.7, 9.2) + 0.6 * t),
                     fbm(p + 4.0 * q + vec2(8.3, 2.8) - 0.5 * t));
       float f = fbm(p + 4.0 * r);
 
-      // palette sampled from Voyager's view of Jupiter
+      // jupiter palette
       vec3 cream = vec3(0.92, 0.87, 0.78);
       vec3 tan   = vec3(0.80, 0.65, 0.47);
       vec3 rust  = vec3(0.64, 0.37, 0.16);
@@ -58,7 +55,7 @@
       vec3 ice   = vec3(0.80, 0.87, 0.95);
       vec3 navy  = vec3(0.12, 0.22, 0.42);
 
-      // warm and cool belts, pushed around by the warp
+      // warm / cool belts
       float band = sin((p.y + 1.3 * r.x + 0.7 * q.y) * 2.6);
       float b = smoothstep(-0.55, 0.55, band);
 
@@ -71,7 +68,7 @@
 
       vec3 col = mix(cool, warm, b);
 
-      // fine streaks along the flow
+      // streaks
       col *= 0.88 + 0.24 * smoothstep(0.2, 0.8, fbm(p * 3.0 + 6.0 * r));
 
       gl_FragColor = vec4(col, 1.0);
@@ -104,7 +101,7 @@
   const uTime = gl.getUniformLocation(prog, "uTime");
   const uScroll = gl.getUniformLocation(prog, "uScroll");
 
-  const SCALE = 0.5; // render at half resolution; the soft look hides it
+  const SCALE = 0.5; // half res
   function resize() {
     canvas.width = Math.max(1, Math.round(innerWidth * SCALE));
     canvas.height = Math.max(1, Math.round(innerHeight * SCALE));
@@ -115,7 +112,6 @@
   window.addEventListener("resize", resize);
 
   const start = performance.now();
-  canvas.classList.add("ready");
   function draw(now) {
     gl.uniform1f(uTime, still ? 20 : (now - start) / 1000 + 20);
     gl.uniform1f(uScroll, window.scrollY * 0.00035);
