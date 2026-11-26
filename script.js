@@ -1,4 +1,4 @@
-const roles = ["Dreamer", "Creator", "Professional Esports Player", "Pushing Beyond Functional Limits"];
+const defaultRoles = ["Dreamer", "Creator", "Professional Esports Player", "Pushing Beyond Functional Limits"];
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -22,6 +22,9 @@ document.getElementById("year").textContent = new Date().getFullYear();
 /* ---------- Typing effect ---------- */
 (function typer() {
   const el = document.getElementById("typed");
+  if (!el) return;
+  // a page can supply its own phrases with data-roles="One|Two|Three"
+  const roles = el.dataset.roles ? el.dataset.roles.split("|") : defaultRoles;
   if (reduceMotion) { el.textContent = roles[0]; return; }
   let r = 0, c = 0, deleting = false;
   function tick() {
@@ -48,10 +51,11 @@ function onScroll() {
   nav.classList.toggle("scrolled", y > 40);
   const max = document.documentElement.scrollHeight - innerHeight;
   progress.style.width = (max > 0 ? (y / max) * 100 : 0) + "%";
-  if (!reduceMotion) planet.style.setProperty("--planet-shift", (y * -0.06).toFixed(1) + "px");
+  if (planet && !reduceMotion) planet.style.setProperty("--planet-shift", (y * -0.06).toFixed(1) + "px");
 
-  let current = sections[0].id;
-  for (const s of sections) if (s.offsetTop - innerHeight * 0.4 <= y) current = s.id;
+  // sections can share one nav link through data-nav (e.g. every Part A section lights up "Part A")
+  let current = sections[0].dataset.nav || sections[0].id;
+  for (const s of sections) if (s.offsetTop - innerHeight * 0.4 <= y) current = s.dataset.nav || s.id;
   links.forEach(l => l.classList.toggle("active", l.getAttribute("href") === "#" + current));
 }
 window.addEventListener("scroll", onScroll, { passive: true });
@@ -144,7 +148,7 @@ document.querySelectorAll(".filter").forEach(btn => {
 
 /* ---------- Contact form: sends through FormSubmit to my inbox ---------- */
 const contactForm = document.getElementById("contactForm");
-contactForm.addEventListener("submit", async (e) => {
+if (contactForm) contactForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const note = document.getElementById("formNote");
   const button = contactForm.querySelector("button[type=submit]");
@@ -234,7 +238,7 @@ if (finePointer && !reduceMotion) {
 
   // Subtle parallax on the hero glow
   const glow = document.querySelector(".hero__glow");
-  window.addEventListener("mousemove", e => {
+  if (glow) window.addEventListener("mousemove", e => {
     const x = (e.clientX / innerWidth - 0.5) * 40;
     const y = (e.clientY / innerHeight - 0.5) * 40;
     glow.style.marginLeft = x + "px";
