@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stellar Dreams — Amir Soltan's Portfolio</title>
+  <meta name="description" content="Stellar Dreams. Where imagination reaches orbit: the self-development portfolio of Amir Soltan." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Orbitron:wght@400;500;600;700;800&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== Loading screen ===== -->
+  <div class="preloader" id="preloader">
+    <div class="preloader__mark">AS</div>
+    <div class="preloader__bar"><span></span></div>
+  </div>
+
+  <!-- ===== Extras: cursor, scroll progress, background ===== -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <!-- flowing gas-giant background (drawn by liquid.js) -->
+  <canvas id="liquid" class="liquid" aria-hidden="true"></canvas>
+  <div class="liquid-shade" aria-hidden="true"></div>
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ===== Navigation ===== -->
+  <header class="nav" id="nav">
+    <a href="index.html" class="nav__logo" aria-label="Back to the main website">
+      <span class="gold-text">AS</span><span class="nav__logo-dot">.</span>
+    </a>
+    <nav>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#brand" class="nav__link">Brand</a></li>
+        <li><a href="#contents" class="nav__link">Contents</a></li>
+        <li><a href="#part-a" class="nav__link">Part A · Who I Am</a></li>
+        <li><a href="#part-b" class="nav__link">Part B · My Growth</a></li>
+        <li><a href="#reflection" class="nav__link">Reflection</a></li>
+        <li><a href="index.html" class="nav__link nav__link--cta">Main Site</a></li>
+      </ul>
+    </nav>
+    <button class="nav__toggle" id="navToggle" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+      <div class="hero__glow"></div>
+      <div class="hero__content">
+        <p class="eyebrow reveal">Stellar Dreams · IR001 Portfolio</p>
+        <h1 class="hero__title reveal">
+          <span class="hero__hi">My Story, My Growth,</span>
+          <span class="gold-text shimmer">My Future</span>
+        </h1>
+        <p class="hero__role reveal">
+          <span class="typed" id="typed" data-roles="Who am I?|What have I discovered?|Who do I aspire to become?|How will I achieve my goals?"></span><span class="caret">|</span>
+        </p>
+        <p class="hero__intro reveal">
+          I'm Amir Soltan. This is where I look honestly at who I am, where I've been, and the
+          trajectory I'm setting for the next fifteen years.
+        </p>
+        <div class="hero__actions reveal">
+          <a href="#brand" class="btn btn--gold magnetic">Start reading</a>
+          <a href="index.html" class="btn btn--ghost magnetic">Back to main site</a>
+        </div>
+      </div>
+      <a href="#brand" class="scroll-hint" aria-label="Scroll down">
+        <span class="scroll-hint__line"></span>
+        <span>Scroll</span>
+      </a>
+    </section>
+
+    <!-- ===== PERSONAL BRAND ===== -->
+    <section class="section" id="brand" data-nav="brand">
+      <div class="section__head reveal">
+        <span class="section__num">✦</span>
+        <h2 class="section__title">My Personal <em class="gold-text">Brand</em></h2>
+        <span class="section__line"></span>
+      </div>
+
+      <div class="brand">
+        <a href="images/stellar-dreams.jpg" class="brand__poster tilt reveal" target="_blank" rel="noopener" aria-label="Open the full Stellar Dreams poster">
+          <img src="images/stellar-dreams.jpg" alt="Stellar Dreams poster: a starship flying past a ringed planet, signed Venture" />
+        </a>
+
+        <div class="brand__text">
+          <span class="brand__kicker reveal">The official brand of this portfolio</span>
+          <h3 class="brand__name reveal">Stellar<br />Dreams</h3>
+          <p class="brand__motto reveal">
+            Where imagination reaches orbit.<br />
+            Crafting visions beyond the horizon.<br />
+            Sleep deep. Wake inspired.
+          </p>
+          <img class="brand__sig reveal" src="images/venture-signature.png" alt="Venture, my signature" />
+
+          <ul class="about__facts reveal">
+            <li><span>Name</span>Soltan, Amir</li>
+            <li><span>Signature</span>Venture</li>
+            <li><span>Home</span><a href="https://elctrsphr.github.io/personal-website/" class="brand__url" target="_blank" rel="noopener">elctrsphr.github.io/personal-website</a></li>
+            <li><span>Palette</span>
+              <span class="swatches" aria-label="Brand colours: deep space black, bone white, engine red, steel blue, gold">
+                <i style="background:#070707"></i><i style="background:#ebe7dc"></i><i style="background:#c8343a"></i><i style="background:#4f7396"></i><i style="background:#d4af37"></i>
+              </span>
+            </li>
+          </ul>
+
+          <p class="brand__meaning reveal">
+            <strong class="hl">What it means.</strong> Stellar Dreams is how I want my work to be remembered: big
+            ideas that actually get launched. The starship is the ISV Venture Star, the ship that pulled me into
+            interstellar design and inspired my Tachyon 714 light sail, heading for a ringed world, the way I'm
+            heading for goals that once felt out of reach. <em>Venture</em> is my signature, because every project
+            is a voyage into something I haven't done before.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTENTS ===== -->
+    <section class="section" id="contents">
+      <div class="section__head reveal">
+        <span class="section__num">00</span>
+        <h2 class="section__title">Table of <em class="gold-text">Contents</em></h2>
+        <span class="section__line"></span>
+      </div>
+
+      <div class="toc">
+        <div class="toc__col reveal">
+          <a href="#part-a" class="toc__label">Part A · Qualification Portfolio</a>
+          <ol>
+            <li><a href="#about-me"><span>A1</span>About Me<i>→</i></a></li>
+            <li><a href="#education"><span>A2</span>Educational Background<i>→</i></a></li>
+            <li><a href="#strengths-weaknesses"><span>A3</span>Strengths &amp; Weaknesses<i>→</i></a></li>
+            <li><a href="#values"><span>A4</span>Values &amp; Principles<i>→</i></a></li>
+            <li><a href="#vision-mission"><span>A5</span>Vision &amp; Mission<i>→</i></a></li>
+            <li><a href="#achievements"><span>A6</span>Achievements &amp; Milestones<i>→</i></a></li>
+            <li><a href="#best-works"><span>A7</span>Best Works<i>→</i></a></li>
+          </ol>
+        </div>
+        <div class="toc__col reveal">
+          <a href="#part-b" class="toc__label">Part B · Competence Portfolio</a>
+          <ol>
+            <li><a href="#skills-inventory"><span>B1</span>Skills Inventory<i>→</i></a></li>
+            <li><a href="#goals"><span>B2</span>Goals: 5, 10 &amp; 15 Years<i>→</i></a></li>
+            <li><a href="#smart"><span>B3</span>SMART Goal-Setting<i>→</i></a></li>
+            <li><a href="#life-map"><span>B4</span>Life Map &amp; Vision Board<i>→</i></a></li>
+            <li><a href="#growth"><span>B5</span>Evidence of Growth<i>→</i></a></li>
+            <li><a href="#challenges"><span>B6</span>Overcoming Challenges<i>→</i></a></li>
+          </ol>
+          <a href="#reflection" class="toc__end"><span>★</span>Final Reflection &amp; Commitment<i>→</i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         PART A — QUALIFICATION PORTFOLIO
+         ========================================================= -->
+    <section class="part" id="part-a" data-nav="part-a">
+      <div class="part__inner reveal">
+        <span class="part__tag">Part A</span>
+        <h2 class="part__title">Qualification <em class="gold-text">Portfolio</em></h2>
+        <p class="part__sub">The story of who I am, told with evidence, context and honest reflection.</p>
+      </div>
+    </section>
+
+    <!-- ===== A1 ABOUT ME ===== -->
+    <section class="section" id="about-me" data-nav="part-a">
+      <div class="section__head reveal">
+        <span class="section__num">A1</span>
+        <h2 class="section__title">About <em class="gold-text">Me</em></h2>
+        <span class="section__line"></span>
+      </div>
+
+      <div class="about">
+        <div class="about__side">
+          <div class="about__photo reveal">
+            <div class="about__frame tilt">
+              <img src="images/me.jpg" alt="Portrait of Amir Soltan" />
+            </div>
+          </div>
+          <ul class="about__facts reveal">
+            <li><span>Name</span>Amir Soltan</li>
+            <li><span>Program</span>BS Entertainment &amp; Multimedia Computing</li>
+            <li><span>Based in</span>Bonifacio Global City, Philippines</li>
+            <li><span>Driven by</span>Games · Space · Code</li>
+          </ul>
+        </div>
+
+        <div class="about__text">
+          <p class="lead reveal">A competitor at heart, a creator by choice, and a stargazer who never treats the sky as the limit.</p>
+          <p class="reveal">
+            <strong class="hl">Personality.</strong> I'm calm under pressure, focused, and quietly stubborn about getting
+            things right. Years of competitive play made me analytical: I like to break problems apart, study
+            what went wrong, and come back better. I'm also a romantic at heart. I write poetry and letters
+            for the person I love, because some things deserve more than a quick message.
+          </p>
+          <p class="reveal">
+            <strong class="hl">Interests &amp; passions.</strong> Games are where everything I love meets: logic,
+            art, story and competition. Outside of them, I'm drawn to astronomy and aerospace, to music that
+            keeps me locked in, and to films like <em>Interstellar</em> and <em>Blade Runner 2049</em> that make
+            the universe feel huge and personal at the same time.
+          </p>
+          <p class="reveal">
+            <strong class="hl">Meaningful experiences.</strong> Being accepted onto a professional Overwatch team in
+            2019 changed how I see myself. It was the first time I was trusted to perform at a high level,
+            and it taught me that talent only matters when it's paired with discipline and trust in a team.
+          </p>
+          <ul class="chips reveal" aria-label="Interests">
+            <li>Game development</li><li>Astronomy</li><li>Aerospace</li><li>Esports</li>
+            <li>3D modeling</li><li>Music</li><li>Film</li><li>Poetry &amp; letters</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="reflect reveal"><span>Reflection</span>
+        Writing this made me notice a pattern: everything I love involves exploring something bigger than
+        me, whether that's a match, a codebase or the night sky. That curiosity is the thread that ties my
+        whole story together.
+      </p>
+    </section>
+
+    <!-- ===== A2 EDUCATIONAL BACKGROUND ===== -->
+    <section class="section" id="education" data-nav="part-a">
+      <div class="section__head reveal">
+        <span class="section__num">A2</span>
+        <h2 class="section__title">Educational <em class="gold-text">Background</em></h2>
+        <span class="section__line"></span>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline__item reveal">
+          <span class="timeline__date">2026 — Present</span>
+          <h3>BS Entertainment &amp; Multimedia Computing</h3>
+          <p class="timeline__place">College of Innovation and Integrated Technology</p>
+          <p>The program I always wanted. I'm going deep into programming and 3D modeling and finally learning the formal craft behind the games and software I've been building on my own. <strong class="hl">Influence:</strong> it gave my passion a structure and a clear path to a career.</p>
+        </div>
+        <div class="timeline__item reveal">
+          <span class="timeline__date">2024 — 2026</span>
+          <h3>Senior High School, STEM (Caregiving Track)</h3>
+          <p class="timeline__place">CEU Malolos</p>
+          <p>A track with little connection to the career I wanted. <strong class="hl">Influence:</strong> it wasn't the right fit, but it gave me the science foundation of STEM, taught me patience and empathy for people, and made me certain of where I actually belonged.</p>
+        </div>
+        <div class="timeline__item reveal">
+          <span class="timeline__date">Ongoing</span>
+          <h3>Self-Directed Learning</h3>
+          <p class="timeline__place">3,000+ hours of coding, modding &amp; 3D work</p>
+          <p>Most of my technical skills came from building things myself: C++ applications, a Kerbal Space Program mod, and this website. <strong class="hl">Influence:</strong> it taught me how to learn: read, try, break it, fix it, repeat.</p>
+        </div>
+        <div class="timeline__item reveal">
+          <span class="timeline__date">2019 — Present</span>
+          <h3>Competitive Esports</h3>
+          <p class="timeline__place">Professional Overwatch Team</p>
+          <p>Not a classroom, but one of my most important teachers. <strong class="hl">Influence:</strong> it taught me discipline, communication, and the habit of reviewing every loss until it becomes a lesson.</p>
+        </div>
+      </div>
+
+      <p class="reflect reveal"><span>Reflection</span>
+        My education didn't follow a straight line, and I've stopped seeing that as a weakness. The detour
+        through caregiving gave me conviction, and the years of self-teaching mean I arrive in BSEMC already
+        knowing why I'm here.
+      </p>
+    </section>
+
+    <!-- ===== A3 STRENGTHS & WEAKNESSES ===== -->
+    <section class="section" id="strengths-weaknesses" data-nav="part-a">
+      <div class="section__head reveal">
+        <span class="section__num">A3</span>
+        <h2 class="section__title">Strengths &amp; <em class="gold-text">Weaknesses</em></h2>
+        <span class="section__line"></span>
+      </div>
+
+      <div class="sw">
+        <div class="sw__col reveal">
+          <h3 class="sw__title"><span class="sw__icon">+</span>Strengths</h3>
+          <ul class="sw__list">
+            <li><h4>Systems-level problem solving</h4><p>I break large problems into small, logical pieces, whether it's a match round or a C++ bug.</p></li>
+            <li><h4>Technical &amp; creative execution</h4><p>I can take an idea from concept to a working, good-looking result, as with my light sail mod.</p></li>
+            <li><h4>Persistence &amp; attention to detail</h4><p>I test and revise until the details hold up to a high standard.</p></li>
+            <li><h4>Composure under pressure</h4><p>Professional competition taught me to stay calm and keep thinking clearly when it counts.</p></li>
+            <li><h4>Curiosity &amp; big-picture vision</h4><p>Astronomy and aerospace keep me asking bigger questions and connecting them to real work.</p></li>
+          </ul>
+        </div>
+        <div class="sw__col sw__col--weak reveal">
+          <h3 class="sw__title"><span class="sw__icon">−</span>Weaknesses</h3>
+          <ul class="sw__list">
+            <li><h4>Perfectionism</h4><p>I can keep polishing long after something is good enough, which delays finishing.</p><p class="sw__fix">Improving: I set a clear "done" point and deadline before I start, then ship and iterate.</p></li>
+            <li><h4>Hyperfocus on passion projects</h4><p>When I'm locked into something I love, routine tasks and rest can slip.</p><p class="sw__fix">Improving: time-blocking my week and finishing must-do tasks before passion work.</p></li>
+            <li><h4>Gaps in formal foundations</h4><p>Being largely self-taught and coming from a caregiving track, I have gaps in math and computer-science theory.</p><p class="sw__fix">Improving: treating BSEMC fundamentals seriously and practising beyond what's assigned.</p></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="reflect reveal"><span>Self-assessment insight</span>
+        My biggest strength and my biggest weakness come from the same place: I care a lot about getting
+        things right. The goal isn't to care less. It's to point that energy at finishing, not just polishing.
+      </p>
+    </section>
+
+    <!-- ===== A4 VALUES & PRINCIPLES ===== -->
+    <section class="section" id="values" data-nav="part-a">
+      <div class="section__head reveal">
+        <span class="section__num">A4</span>
+        <h2 class="section__title">Values &amp; <em class="gold-text">Principles</em></h2>
+        <span class="section__line"></span>
+      </div>
+
+      <div class="cards cards--3">
+        <article class="card tilt reveal">
+          <div class="card__icon"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17l-6.1 3.4 1.5-6.8L2.2 9l6.9-.7z"/></svg></div>
+          <h3>Discipline</h3>
+          <p>Talent opens the door, but discipline keeps you in the room. I show up and do the work, even on days I don't feel like it.</p>
+        </article>
+        <article class="card tilt reveal">
+          <div class="card__icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5M15.5 14.6c2.6-.3 4.9 1.3 5.6 4.4"/></svg></div>
+          <h3>Teamwork &amp; Trust</h3>
+          <p>No tournament was ever won alone. I trust the people around me and work to be someone they can trust back.</p>
+        </article>
+        <article class="card tilt reveal">
+          <div class="card__icon"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></div>
+          <h3>Curiosity</h3>
+          <p>There's always more to explore than what we can see. I'd rather ask one more question than assume I know the answer.</p>
+        </article>
+        <article class="card tilt reveal">
+          <div class="card__icon"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15.5-6.2L21 8M21 3v5h-5M21 12a9 9 0 0 1-15.5 6.2L3 16M3 21v-5h5"/></svg></div>
+          <h3>Learn From Every Loss</h3>
+          <p>A loss isn't the end, it's information. I review mistakes honestly, adjust, and go again.</p>
+        </article>
+        <article class="card tilt reveal">
+          <div class="card__icon"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
+          <h3>Sincerity</h3>
+          <p>I say what I mean and mean what I say, in my work and with the people I love.</p>
+        </article>
+        <article class="card tilt reveal">
+          <div class="card__icon"><svg viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="5.5" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4.1M8.2 13.2l7.6 4.1"/></svg></div>
+          <h3>Share What You Build</h3>
+          <p>I released my light sail mod as open source because the communities that taught me deserve something back.</p>
+        </article>
+      </div>
+
+      <p class="reflect reveal"><span>Reflection</span>
+        Most of these values weren't taught to me in a lecture. I learned them by losing, by being trusted
+        and by being helped. That's why I hold onto them: I know exactly what they're worth.
+      </p>
+    </section>
+
+    <!-- ===== A5 VISION & MISSION ===== -->
+    <section class="section" id="vision-mission" data-nav="part-a">
+      <div class="section__head reveal">
+        <span class="section__num">A5</span>
+        <h2 class="section__title">Vision &amp; <em class="gold-text">Mission</em></h2>
+        <span class="section__line"></span>
+      </div>
+
+      <div class="vm">
+        <div class="vm__panel reveal">
+          <span class="vm__label">Vision</span>
+          <p class="vm__text">To become a game developer and software engineer whose work makes people feel the wonder I feel looking at the stars, and the thrill I feel when a match comes together.</p>
+        </div>
+        <div class="vm__panel reveal">
+          <span class="vm__label">Mission</span>
+          <p class="vm__text">To keep learning the craft every day, build games and tools that bring people together, share what I make openly, and carry the discipline of competition into everything I create.</p>
+        </div>
+      </div>
+
+      <p class="reflect reveal"><span>Life purpose</span>
+        I want to create worlds that other people can get lost in, the way I got lost in games, films and
+        the night sky growing up. If something I build gives someone that feeling, I've done what I'm here to do.
+      </p>
+    </section>
+
+    <!-- ===== A6 ACHIEVEMENTS & MILESTONES ===== -->
+    <section class="section" id="achievements" data-nav="part-a">
+      <div class="section__head reveal">
+        <span class="section__num">A6</span>
+        <h2 class="section__title">Achievements &amp; <em class="gold-text">Milestones</em></h2>
+        <span class="section__line"></span>
+      </div>
+
+      <div class="stats stats--4 reveal">
+        <div class="stat"><span class="stat__num" data-count="9">0</span><p>First-place tournament finishes</p></div>
+        <div class="stat"><span class="stat__num" data-count="6">0</span><span class="stat__plus">+</span><p>Years of competitive Overwatch</p></div>
+        <div class="stat"><span class="stat__num" data-count="3000">0</span><span class="stat__plus">+</span><p>Hours of coding experience</p></div>
+        <div class="stat"><span class="stat__num" data-count="3">0</span><p>Projects publicly released</p></div>
+      </div>
+
+      <div class="milestones">
+        <article class="milestone reveal">
+          <span class="milestone__date">2019</span>
+          <h3>Accepted onto a professional Overwatch team</h3>
+          <p>The moment I was first trusted to compete at a high level, and where my discipline was built.</p>
+        </article>
+        <article class="milestone reveal">
+          <span class="milestone__date">9× Champion</span>
+          <h3>First place in 9 tournaments</h3>
+          <p>Every win came the same way: together, one round at a time, after reviewing every loss.</p>
+        </article>
+        <article class="milestone reveal">
+          <span class="milestone__date">Open source</span>
+          <h3>Released the Tachyon 714 Light Sail</h3>
+          <p>My own interstellar light sail mod for Kerbal Space Program, published for anyone to use.</p>
+          <a href="https://spacedock.info/mod/4729/Tachyon%20714%20Light%20Sail" class="project__link" target="_blank" rel="noopener">Evidence: SpaceDock <span>→</span></a>
+        </article>
+        <article class="milestone reveal">
+          <span class="milestone__date">Shipped twice</span>
+          <h3>Built Pulse Visualizer, then rebuilt it as 2.0</h3>
+          <p>A real-time C++ audio visualizer with Spotify lyric sync, fully overhauled for its second release.</p>
+          <a href="https://github.com/ELCTRSPHR/PulseVisualizer" class="project__link" target="_blank" rel="noopener">Evidence: GitHub <span>→</span></a>
+        </article>
+        <article class="milestone reveal">
+          <span class="milestone__date">2026</span>
+          <h3>Completed Senior High School</h3>
+          <p>Finished the STEM strand at CEU Malolos, and left it certain of the direction I wanted.</p>
+        </article>
+        <article class="milestone reveal">
+          <span class="milestone__date">2026</span>
+          <h3>Began BSEMC</h3>
+          <p>Chose and started the program built around exactly what I want to do with my life.</p>
+        </article>
+      </div>
+
+      <p class="reflect reveal"><span>Reflection</span>
+        Looking at these together, the achievement I'm proudest of isn't a trophy. It's that I keep finishing
+        things and putting them out into the world, even when they're not perfect.
+      </p>
+    </section>
+
+    <!-- ===== A7 BEST WORKS ===== -->
+    <section class="section" id="best-works" data-nav="part-a">
+      <div class="section__head reveal">
+        <span class="section__num">A7</span>
+        <h2 class="section__title">Best <em class="gold-text">Works</em></h2>
+        <span class="section__line"></span>
+      </div>
+
+      <div class="projects">
+        <article class="project reveal">
+          <div class="project__img">
+            <svg class="project__art" viewBox="0 0 320 200" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Line drawing of a starship towed by a laser light sail">
+              <path d="M312 58H44M312 142H44" stroke-dasharray="2 7" opacity=".5"/>
+              <path d="M46 26Q10 100 46 174"/>
+              <path d="M46 26Q30 100 46 174"/>
+              <path d="M33 62l-6 1M30 100h-9M33 138l-6-1" opacity=".6"/>
+              <path d="M46 26L128 92M46 174L128 108M40 64L128 96M40 136L128 104" stroke-width="1" opacity=".55"/>
+              <ellipse cx="132" cy="100" rx="4" ry="20"/>
+              <path d="M136 100H262"/>
+              <rect x="141" y="93" width="26" height="14" rx="2"/>
+              <rect x="171" y="95" width="18" height="10" rx="2"/>
+              <path d="M196 97L208 74H238L246 97M196 103L208 126H238L246 103"/>
+              <path d="M214 74L210 97M226 74L226 97M214 126L210 103M226 126L226 103" stroke-width="1" opacity=".55"/>
+              <path d="M250 95v10M256 95v10"/>
+              <rect x="262" y="92" width="10" height="16" rx="1.5"/>
+              <path d="M272 95L288 87V113L272 105"/>
+            </svg>
+          </div>
+          <div class="project__body">
+            <span class="project__cat">3D Modeling · Game Mod</span>
+            <h3>Tachyon 714 Light Sail</h3>
+            <p>A laser-pushed interstellar light sail for Kerbal Space Program: a 2.8&nbsp;m canister that deploys a seed pod on carbon-nanotube tethers and unfolds into a 2&nbsp;km mirrored dish.</p>
+            <p class="project__note">Why it's here: it's where my love of space and my technical skills met for the first time in a finished, public project.</p>
+            <a href="https://spacedock.info/mod/4729/Tachyon%20714%20Light%20Sail" class="project__link" target="_blank" rel="noopener">View on SpaceDock <span>→</span></a>
+          </div>
+        </article>
+        <article class="project reveal">
+          <div class="project__img">
+            <svg class="project__art" viewBox="0 0 320 200" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Pulse Visualizer 2.0 app icon">
+              <rect x="94" y="34" width="132" height="132" rx="30"/>
+              <path stroke-width="3.2" d="M160 73L160 57.3M165.6 73.6L169.9 53.6M171 75.3L181.8 50.9M175.9 78.2L189.1 59.9M180.1 81.9L195.2 68.3M183.4 86.5L202.6 75.4M185.7 91.7L209.8 83.8M186.9 97.2L203.8 95.4M186.9 102.8L210.2 105.3M185.7 108.3L208.4 115.7M183.4 113.5L202.1 124.3M180.1 118.1L196.6 133M175.9 121.8L190.2 141.5M171 124.7L180.3 145.5M165.6 126.4L169.2 143.3M160 127L160 152.9M154.4 126.4L149.7 148.3M149 124.7L141.1 142.5M144.1 121.8L130.5 140.6M139.9 118.1L119.8 136.2M136.6 113.5L119.5 123.4M134.3 108.3L118.9 113.4M133.1 102.8L105.9 105.7M133.1 97.2L108 94.5M134.3 91.7L118.4 86.5M136.6 86.5L116.9 75.1M139.9 81.9L118.4 62.5M144.1 78.2L131.9 61.4M149 75.3L143.2 62.3M154.4 73.6L148.6 46.6"/>
+              <circle cx="160" cy="100" r="17"/>
+              <circle cx="160" cy="100" r="6" fill="currentColor"/>
+              <rect x="203" y="21" width="46" height="26" rx="13" fill="#1a160b"/>
+              <text class="project__badge" x="226" y="34.5" text-anchor="middle" dominant-baseline="middle" fill="currentColor" stroke="none">V2</text>
+            </svg>
+          </div>
+          <div class="project__body">
+            <span class="project__cat">C++ Application</span>
+            <h3>Pulse Visualizer 2.0</h3>
+            <p>A real-time audio visualizer built purely in C++ that syncs with Spotify, shows live lyrics, and offers three visualizer modes with deep customisation.</p>
+            <p class="project__note">Why it's here: it's my clearest proof of growth. I retired my own first version and rebuilt it better.</p>
+            <a href="https://github.com/ELCTRSPHR/PulseVisualizer" class="project__link" target="_blank" rel="noopener">View on GitHub <span>→</span></a>
+          </div>
+        </article>
+        <article class="project reveal">
+          <div class="project__img">
+            <svg class="project__art" viewBox="0 0 320 200" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Line drawing of a browser window showing a website">
+              <rect x="62" y="30" width="196" height="140" rx="10"/>
+              <path d="M62 52H258"/>
+              <circle cx="76" cy="41" r="3"/><circle cx="87" cy="41" r="3"/><circle cx="98" cy="41" r="3"/>
+              <path d="M84 70H118M196 70h40" opacity=".6"/>
+              <path d="M124 96H196" stroke-width="3"/>
+              <path d="M132 110H188" opacity=".6"/>
+              <rect x="138" y="122" width="44" height="12" rx="6"/>
+              <path d="M84 150h40M140 150h40M196 150h40" opacity=".45"/>
+              <circle cx="228" cy="104" r="16" opacity=".55"/>
+              <path d="M206 108a24 6 -18 0 0 44 -8" opacity=".55"/>
+            </svg>
+          </div>
+          <div class="project__body">
+            <span class="project__cat">Web Design &amp; Development</span>
+            <h3>This Personal Website</h3>
+            <p>Designed and hand-coded in HTML, CSS and JavaScript, with a custom gold-and-space look, animations, and a small C++ server I wrote to preview it locally.</p>
+            <p class="project__note">Why it's here: it's a living portfolio. It shows my design taste and coding skills, and it will keep growing after this course.</p>
+            <a href="index.html" class="project__link">Visit the main site <span>→</span></a>
+          </div>
+        </article>
+      </div>
+
+      <p class="reflect reveal"><span>Reflection</span>
+        Each of these works started as something I simply wanted to exist. Finishing them taught me more
+        than any single lesson could: how to scope, how to debug for hours, and how to let something go public.
+      </p>
+    </section>
+
+    <!-- =========================================================
+         PART B — COMPETENCE PORTFOLIO
+         ========================================================= -->
+    <section class="part" id="part-b" data-nav="part-b">
+      <div class="part__inner reveal">
+        <span class="part__tag">Part B</span>
+        <h2 class="part__title">Competence <em class="gold-text">Portfolio</em></h2>
+        <p class="part__sub">Turning what I know about myself into a practical direction for growth.</p>
+      </div>
+    </section>
+
+    <!-- ===== B1 SKILLS INVENTORY ===== -->
+    <section class="section" id="skills-inventory" data-nav="part-b">
+      <div class="section__head reveal">
+        <span class="section__num">B1</span>
+        <h2 class="section__title">Skills <em class="gold-text">Inventory</em></h2>
+        <span class="section__line"></span>
+      </div>
+
+      <div class="skillset">
+        <div class="skillset__group reveal">
+          <h3>Personal</h3>
+          <p>How I manage myself.</p>
+          <ul class="chips">
+            <li>Self-discipline</li><li>Composure under pressure</li><li>Persistence</li>
+            <li>Curiosity</li><li>Self-reflection</li><li>Attention to detail</li>
+          </ul>
+        </div>
+        <div class="skillset__group reveal">
+          <h3>Interpersonal</h3>
+          <p>How I work with others.</p>
+          <ul class="chips">
+            <li>Teamwork</li><li>Communication under pressure</li><li>Giving &amp; taking feedback</li>
+            <li>Reliability</li><li>Expressive writing</li><li>Empathy</li>
+          </ul>
+        </div>
+        <div class="skillset__group reveal">
+          <h3>Professional</h3>
+          <p>What I can build.</p>
+          <ul class="chips">
+            <li>C++</li><li>Debugging</li><li>3D modeling</li><li>Procedural geometry</li>
+            <li>Game modding</li><li>HTML · CSS · JavaScript</li><li>UI design</li>
+          </ul>
+        </div>
+        <div class="skillset__group skillset__group--grow reveal">
+          <h3>Areas to Strengthen</h3>
+          <p>What I'm actively working on.</p>
+          <ul class="chips">
+            <li>Time management</li><li>Math &amp; physics foundations</li><li>Unity / Unreal Engine</li>
+            <li>Presenting my work</li><li>Finishing over polishing</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="reflect reveal"><span>Reflection</span>
+        My professional skills grew fastest because I practised them for fun. The skills I need to strengthen
+        are the ones that don't come naturally, so they need a plan, not just enthusiasm.
+      </p>
+    </section>
+
+    <!-- ===== B2 GOALS ===== -->
+    <section class="section" id="goals" data-nav="part-b">
+      <div class="section__head reveal">
+        <span class="section__num">B2</span>
+        <h2 class="section__title">My <em class="gold-text">Goals</em></h2>
+        <span class="section__line"></span>
+      </div>
+
+      <div class="horizons">
+        <article class="horizon reveal">
+          <span class="horizon__when">Short-term</span>
+          <h3>2026 — 2028</h3>
+          <ul>
+            <li>Finish my first year of BSEMC with strong grades in programming and 3D.</li>
+            <li>Release my first small original game (see my SMART goal).</li>
+            <li>Keep improving Pulse Visualizer 2.0 based on user feedback.</li>
+          </ul>
+        </article>
+        <article class="horizon reveal">
+          <span class="horizon__when">5 Years</span>
+          <h3>By 2031</h3>
+          <ul>
+            <li>Graduate from BSEMC with a portfolio of at least three finished games.</li>
+            <li>Complete an internship at a game studio or software company.</li>
+            <li>Reach a professional level in a major game engine.</li>
+          </ul>
+        </article>
+        <article class="horizon reveal">
+          <span class="horizon__when">10 Years</span>
+          <h3>By 2036</h3>
+          <ul>
+            <li>Work as an established game developer or software engineer.</li>
+            <li>Lead development on a shipped commercial title.</li>
+            <li>Mentor new developers and aspiring esports players.</li>
+          </ul>
+        </article>
+        <article class="horizon reveal">
+          <span class="horizon__when">15 Years</span>
+          <h3>By 2041</h3>
+          <ul>
+            <li>Found or co-lead my own independent game studio.</li>
+            <li>Create a space-inspired game that captures the wonder of the night sky.</li>
+            <li>Use software to support astronomy or space education.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== B3 SMART ===== -->
+    <section class="section" id="smart" data-nav="part-b">
+      <div class="section__head reveal">
+        <span class="section__num">B3</span>
+        <h2 class="section__title">SMART <em class="gold-text">Framework</em></h2>
+        <span class="section__line"></span>
+      </div>
+
+      <div class="smart__goal reveal">
+        <span>My SMART goal</span>
+        <p>By December 2028, I will design, build and publicly release a short, original space-themed game that can be played from start to finish in about 15 minutes.</p>
+      </div>
+
+      <ol class="smart">
+        <li class="reveal"><b>S</b><div><h3>Specific</h3><p>One small, original space-themed game, built in a game engine using my own 3D models and programming.</p></div></li>
+        <li class="reveal"><b>M</b><div><h3>Measurable</h3><p>A complete build with a menu, a beginning and an ending; tested by at least 15 players; at least one update released from their feedback.</p></div></li>
+        <li class="reveal"><b>A</b><div><h3>Achievable</h3><p>The scope is deliberately small. I already have 3,000+ hours of coding and 3D modeling experience, and I'll commit 6 focused hours every week alongside school.</p></div></li>
+        <li class="reveal"><b>R</b><div><h3>Relevant</h3><p>It moves me straight toward my 5-year goal of a game portfolio and puts what I learn in BSEMC into practice.</p></div></li>
+        <li class="reveal"><b>T</b><div><h3>Time-bound</h3><p>Concept and prototype by June 2028 · playable alpha by September 2028 · public release by December 2028.</p></div></li>
+      </ol>
+    </section>
+
+    <!-- ===== B4 LIFE MAP / VISION BOARD ===== -->
+    <section class="section" id="life-map" data-nav="part-b">
+      <div class="section__head reveal">
+        <span class="section__num">B4</span>
+        <h2 class="section__title">Life Map &amp; <em class="gold-text">Vision Board</em></h2>
+        <span class="section__line"></span>
+      </div>
+
+      <ol class="lifemap reveal" aria-label="Life map">
+        <li><span class="lifemap__dot"></span><b>2026</b><h3>Launch</h3><p>Begin BSEMC</p></li>
+        <li><span class="lifemap__dot"></span><b>2028</b><h3>First Game</h3><p>Release an original game</p></li>
+        <li><span class="lifemap__dot"></span><b>2030</b><h3>Graduate</h3><p>Earn my BSEMC degree</p></li>
+        <li><span class="lifemap__dot"></span><b>2031</b><h3>Industry</h3><p>Join a studio as a developer</p></li>
+        <li><span class="lifemap__dot"></span><b>2036</b><h3>Lead</h3><p>Lead a shipped title</p></li>
+        <li class="lifemap__end"><span class="lifemap__dot"></span><b>2041</b><h3>Beyond</h3><p>My own studio &amp; space-inspired games</p></li>
+      </ol>
+
+      <div class="board">
+        <div class="board__tile board__tile--wide reveal">
+          <span class="quote__mark gold-text">“</span>
+          <p>No matter how high you dream, Reach for the Stars, Always.</p>
+        </div>
+        <div class="board__tile reveal">
+          <div class="card__icon"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="3"/><path d="M6 12h4M8 10v4"/><circle cx="16" cy="11" r=".5"/><circle cx="18" cy="13" r=".5"/></svg></div>
+          <h3>Create</h3><p>Build worlds people remember.</p>
+        </div>
+        <div class="board__tile reveal">
+          <div class="card__icon"><svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3"/></svg></div>
+          <h3>Compete</h3><p>Bring a champion's discipline to every project.</p>
+        </div>
+        <div class="board__tile reveal">
+          <div class="card__icon"><svg viewBox="0 0 24 24"><path d="M12 2c3 3 4.5 6.5 4.5 10.5L14 17h-4l-2.5-4.5C7.5 8.5 9 5 12 2z"/><circle cx="12" cy="9.5" r="1.8"/><path d="M10 17l-1.5 4M14 17l1.5 4M7.5 12.5L4 15l1 3 3-1M16.5 12.5L20 15l-1 3-3-1"/></svg></div>
+          <h3>Explore</h3><p>Stay curious about space and new technology.</p>
+        </div>
+        <div class="board__tile reveal">
+          <div class="card__icon"><svg viewBox="0 0 24 24"><path d="M2 7l10-4 10 4-10 4z"/><path d="M6 9v5c0 1.7 2.7 3 6 3s6-1.3 6-3V9M22 7v6"/></svg></div>
+          <h3>Learn</h3><p>Master the foundations, not just the shortcuts.</p>
+        </div>
+        <div class="board__tile reveal">
+          <div class="card__icon"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
+          <h3>Love</h3><p>Make time for the people who matter most.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== B5 EVIDENCE OF GROWTH ===== -->
+    <section class="section" id="growth" data-nav="part-b">
+      <div class="section__head reveal">
+        <span class="section__num">B5</span>
+        <h2 class="section__title">Evidence of <em class="gold-text">Growth</em></h2>
+        <span class="section__line"></span>
+      </div>
+
+      <div class="growth">
+        <article class="growth__row reveal">
+          <div class="growth__then"><span>Then</span><p>Pulse Visualizer v1: my first big C++ app. It worked, but I had outgrown the way it was built.</p></div>
+          <div class="growth__arrow" aria-hidden="true">→</div>
+          <div class="growth__now"><span>Now</span><p>Pulse Visualizer 2.0: a full overhaul with better performance, more polish and deeper control.</p></div>
+          <p class="growth__note">Retiring something I was proud of taught me that growth sometimes means starting over with what you've learned. <a href="https://github.com/ELCTRSPHR/PulseVisualizer" class="project__link" target="_blank" rel="noopener">Evidence <span>→</span></a></p>
+        </article>
+        <article class="growth__row reveal">
+          <div class="growth__then"><span>Then</span><p>A player, flying missions in Kerbal Space Program and dreaming about interstellar travel.</p></div>
+          <div class="growth__arrow" aria-hidden="true">→</div>
+          <div class="growth__now"><span>Now</span><p>A creator who designed and released the Tachyon 714 Light Sail for other players to use.</p></div>
+          <p class="growth__note">I moved from consuming the things I love to contributing to them. <a href="https://spacedock.info/mod/4729/Tachyon%20714%20Light%20Sail" class="project__link" target="_blank" rel="noopener">Evidence <span>→</span></a></p>
+        </article>
+        <article class="growth__row reveal">
+          <div class="growth__then"><span>Then</span><p>A caregiving track in STEM, a path chosen for me more than by me.</p></div>
+          <div class="growth__arrow" aria-hidden="true">→</div>
+          <div class="growth__now"><span>Now</span><p>Studying Entertainment and Multimedia Computing, exactly what I want to build my life around.</p></div>
+          <p class="growth__note">I learned to make decisions about my future with intention instead of drifting.</p>
+        </article>
+        <article class="growth__row reveal">
+          <div class="growth__then"><span>Then</span><p>2019: a new player on a professional team, still learning how to handle pressure.</p></div>
+          <div class="growth__arrow" aria-hidden="true">→</div>
+          <div class="growth__now"><span>Now</span><p>6+ years of competition and 9 first-place finishes, built on reviewing every loss.</p></div>
+          <p class="growth__note">Consistency beat raw talent. Small improvements, repeated, became championships.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== B6 OVERCOMING CHALLENGES ===== -->
+    <section class="section" id="challenges" data-nav="part-b">
+      <div class="section__head reveal">
+        <span class="section__num">B6</span>
+        <h2 class="section__title">Overcoming <em class="gold-text">Challenges</em></h2>
+        <span class="section__line"></span>
+      </div>
+
+      <div class="challenges">
+        <article class="challenge reveal">
+          <h3>Being on the wrong path</h3>
+          <dl>
+            <dt>Challenge</dt><dd>Two years in a caregiving track with little connection to the career I wanted.</dd>
+            <dt>Strategy</dt><dd>I kept building on my own time, through mods, apps and code, so my real goals never went on pause.</dd>
+            <dt>Lesson</dt><dd>A detour can still lead you somewhere, if you use it to get clear on where you're going.</dd>
+          </dl>
+        </article>
+        <article class="challenge reveal">
+          <h3>Balancing everything at once</h3>
+          <dl>
+            <dt>Challenge</dt><dd>Competing, studying and building passion projects all compete for the same hours.</dd>
+            <dt>Strategy</dt><dd>Time-blocking, clear priorities each week, and music to lock into focus when it matters.</dd>
+            <dt>Lesson</dt><dd>Steady progress beats bursts of effort followed by burnout.</dd>
+          </dl>
+        </article>
+        <article class="challenge reveal">
+          <h3>Perfectionism</h3>
+          <dl>
+            <dt>Challenge</dt><dd>Wanting every detail perfect can stop me from finishing and releasing.</dd>
+            <dt>Strategy</dt><dd>Define "done" up front, ship a version, then improve it, the way v1 became 2.0.</dd>
+            <dt>Lesson</dt><dd>Finished and improving is better than perfect and unreleased.</dd>
+          </dl>
+        </article>
+      </div>
+
+      <div class="support reveal">
+        <div>
+          <h3>My support system</h3>
+          <ul class="chips">
+            <li>My esports teammates</li><li>The person I love</li><li>My instructors &amp; classmates</li>
+            <li>Modding &amp; open-source communities</li><li>Music</li>
+          </ul>
+        </div>
+        <div>
+          <h3>My resilience rule</h3>
+          <p class="support__rule">Review. Adjust. <span class="gold-text">Go again.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FINAL REFLECTION ===== -->
+    <section class="section" id="reflection" data-nav="reflection">
+      <div class="section__head reveal">
+        <span class="section__num">★</span>
+        <h2 class="section__title">Final <em class="gold-text">Reflection</em></h2>
+        <span class="section__line"></span>
+      </div>
+
+      <div class="closing">
+        <p class="lead reveal">The most important thing I've realized is that the habits that won me tournaments are the same ones that will build my career: review honestly, trust the people around you, and keep going.</p>
+        <p class="reveal">My commitment is simple. I will keep learning every day, finish what I start, share what I build, and never let the stars be the limit.</p>
+      </div>
+    </section>
+
+    <section class="quote reveal">
+      <blockquote>
+        <span class="quote__mark gold-text">“</span>
+        No matter how high you dream, Reach for the Stars, Always.
+        <cite>— Amir Soltan</cite>
+      </blockquote>
+    </section>
+
+    <section class="section portfolio-end">
+      <div class="hero__actions reveal">
+        <a href="index.html" class="btn btn--gold magnetic">Back to main site</a>
+        <a href="index.html#contact" class="btn btn--ghost magnetic">Get in touch</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <a href="index.html" class="nav__logo"><span class="gold-text">AS</span><span class="nav__logo-dot">.</span></a>
+    <p>© <span id="year"></span> Amir Soltan · <span class="footer__brand">Stellar Dreams</span>. Where imagination reaches orbit.</p>
+    <a href="#home" class="to-top magnetic" id="toTop" aria-label="Back to top">↑</a>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="liquid.js"></script>
+</body>
+</html>
