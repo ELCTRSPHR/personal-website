@@ -101,7 +101,7 @@ body.has-cursor .cursor-dot, body.has-cursor .cursor-ring { display: block; }
 }
 
 /* ---------- Background layers ---------- */
-#particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+#particles, #meteors { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 .planet {
   position: fixed; z-index: 0; pointer-events: none;
   top: 50%; right: -38vw; width: 112vw;

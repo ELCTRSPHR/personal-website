@@ -289,3 +289,86 @@ if (finePointer && !reduceMotion) {
   window.addEventListener("resize", resize);
   draw();
 })();
+
+/* ---------- Shooting stars (main page only) ---------- */
+(function meteors() {
+  const canvas = document.getElementById("meteors");
+  if (!canvas || reduceMotion) return;
+  const ctx = canvas.getContext("2d");
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  let w, h, stars = [], last = 0, nextSpawn = 1500;
+
+  function resize() {
+    w = canvas.width = innerWidth * dpr;
+    h = canvas.height = innerHeight * dpr;
+    canvas.style.width = innerWidth + "px";
+    canvas.style.height = innerHeight + "px";
+  }
+
+  function spawn() {
+    // Start along the top edge or the upper part of the right edge, travel down-left.
+    const fromTop = Math.random() < 0.65;
+    const angle = (Math.PI * (0.72 + Math.random() * 0.1)); // ~130–148°, down-left
+    const speed = (0.9 + Math.random() * 0.7) * dpr;         // px per ms
+    stars.push({
+      x: fromTop ? w * (0.25 + Math.random() * 0.75) : w + 20 * dpr,
+      y: fromTop ? -20 * dpr : h * Math.random() * 0.45,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      len: (120 + Math.random() * 160) * dpr,
+      life: 0,
+      max: 700 + Math.random() * 700,
+      width: (1 + Math.random() * 0.8) * dpr,
+    });
+  }
+
+  function draw(now) {
+    const dt = Math.min(now - (last || now), 50);
+    last = now;
+    ctx.clearRect(0, 0, w, h);
+
+    nextSpawn -= dt;
+    if (nextSpawn <= 0) {
+      spawn();
+      if (Math.random() < 0.15) spawn(); // occasional pair
+      nextSpawn = 2500 + Math.random() * 4500;
+    }
+
+    stars = stars.filter((s) => s.life < s.max);
+    for (const s of stars) {
+      s.life += dt;
+      s.x += s.vx * dt;
+      s.y += s.vy * dt;
+      const p = s.life / s.max;
+      const fade = p < 0.15 ? p / 0.15 : 1 - (p - 0.15) / 0.85; // quick fade in, slow fade out
+      const mag = Math.hypot(s.vx, s.vy);
+      const tx = s.x - (s.vx / mag) * s.len;
+      const ty = s.y - (s.vy / mag) * s.len;
+
+      const grad = ctx.createLinearGradient(s.x, s.y, tx, ty);
+      grad.addColorStop(0, `rgba(255, 241, 184, ${0.95 * fade})`);
+      grad.addColorStop(0.25, `rgba(232, 196, 90, ${0.5 * fade})`);
+      grad.addColorStop(1, "rgba(212, 175, 55, 0)");
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = s.width;
+      ctx.lineCap = "round";
+      ctx.beginPath();
+      ctx.moveTo(s.x, s.y);
+      ctx.lineTo(tx, ty);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(255, 248, 220, ${fade})`;
+      ctx.shadowColor = "rgba(245, 215, 122, 0.9)";
+      ctx.shadowBlur = 12 * dpr;
+      ctx.arc(s.x, s.y, s.width * 1.2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  window.addEventListener("resize", resize);
+  requestAnimationFrame(draw);
+})();
