@@ -331,7 +331,7 @@ if (finePointer && !reduceMotion) {
     if (nextSpawn <= 0) {
       spawn();
       if (Math.random() < 0.15) spawn(); // occasional pair
-      nextSpawn = 2500 + Math.random() * 4500;
+      nextSpawn = 1800 + Math.random() * 3200;
     }
 
     stars = stars.filter((s) => s.life < s.max);
